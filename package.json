@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest  --coverage",
     "test:w": "jest --watchAll",
     "start": "webpack-dev-server --open",
     "build": "cross-env NODE_ENV=production webpack --env.production",

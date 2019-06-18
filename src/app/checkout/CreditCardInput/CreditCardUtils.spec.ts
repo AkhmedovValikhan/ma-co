@@ -20,8 +20,8 @@ const VALID_CARDS: TestCase[] = [
 ].map(s => [s, true] as TestCase);
 
 const INVALID_CARDS: TestCase[] = [
-    '12345',
-    '1B1B1B1B',
+    '12345', 
+    '1B1B1B1B', // amex
     '4305446332026986', // visa
     '4485184826045995', // visa
     '2350481712159823', // mcard

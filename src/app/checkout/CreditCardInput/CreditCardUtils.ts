@@ -89,7 +89,7 @@ export const CARD_SCHEMES = {
     } as CardScheame,
     ['mc']: {
         title: 'Master Card',
-        begining: ['51', '52', '53', '54', '55'],
+        begining: ['51', '52', '53', '54', '55', '22', '23', '24', '25', '26', '27'],
         maxLength: 16,
         minLength: 16,
     } as CardScheame,

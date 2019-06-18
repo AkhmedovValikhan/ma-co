@@ -9,7 +9,7 @@ export const parseExpirationDate = (value: string): [number, number] | null => {
 
     const monthStr = value.slice(0, 2);
     month = parseInt(monthStr, 10);
-    if (month > 12 || month < 2) {
+    if (month > 12 || month < 1) {
         return null;
     }
     const yearStr = value.slice(2, 4);

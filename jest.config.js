@@ -10,9 +10,10 @@ module.exports = {
     },
     "setupFilesAfterEnv": ["<rootDir>/src/enzyme-setup.js"],
     "coverageDirectory": "./coverage/",
-    "collectCoverage": true,
+    "collectCoverage": false,
     "collectCoverageFrom": [
         "src/**/*.{js,jsx,ts,tsx}",
+        "src/**/*.spec.{js,jsx,ts,tsx}",
         "!<rootDir>/node_modules/",
         "!<rootDir>/src/index.js"
     ],
