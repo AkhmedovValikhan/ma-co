@@ -2,8 +2,6 @@
 
 $btn-class: '.button';
 
-$btn-height: 60px;
-
 @mixin button-theme($theme-name, $bg-col, $bg-col-hover, $ftn-col) {
     #{$btn-class}:not(#{$btn-class}--disabled)#{$btn-class}--normal#{$btn-class}--#{$theme-name} {
         background: $bg-col;
@@ -25,10 +23,11 @@ $btn-height: 60px;
     }
 }
 
-@mixin button-size($size-name, $font-size, $font-weight, $uppercase) {
+@mixin button-size($size-name, $font-size, $font-weight, $uppercase, $height) {
     #{$btn-class}#{&}--#{$size-name} {
         font-size: $font-size;
         font-weight: $font-weight;
+        height: $height;
 
         @if ($uppercase) {
             text-transform: uppercase;
@@ -48,7 +47,6 @@ $btn-height: 60px;
     min-width: 100px;
     justify-content: center;
     align-items: center;
-    height: $btn-height;
     font-size: 1.125rem;
     font-weight: 600;
     overflow: hidden;
@@ -69,8 +67,8 @@ $btn-height: 60px;
     }
 }
 
-@include button-size('md', 1.125rem, 600, true);
-@include button-size('sm', 1rem, 500, false);
+@include button-size('md', 1.125rem, 600, true, 60px);
+@include button-size('sm', 1rem, 500, false, 40px);
 
 @include button-theme('primary', $color-primary, $color-primary-hover, white);
 @include button-minimal-theme('primary', $color-primary);

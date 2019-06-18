@@ -18,13 +18,18 @@
     &__cc-container {
         padding: 0 0 20px 35px;
     }
-}
 
-.payment {
+    &__code-btn-icon {
+        margin-right: 10px;
+    }
+
+    &__payment-container {
+        margin-bottom: 20px;
+    }
+
     &__method-header {
         margin-bottom: 20px;
         display: flex;
         justify-content: space-between;
     }
-
 }

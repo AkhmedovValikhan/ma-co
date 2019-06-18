@@ -75,7 +75,15 @@ export class Input extends React.PureComponent<InputProps, State> {
         const className = `${classes} ${this.props.className ? this.props.className : ''}`;
         return <React.Fragment>
             <div className='input__container'>
-                <input disabled={disabled} ref={this._inputRef} autoComplete='off' formNoValidate value={value} className={className} onInput={this.onInput} />
+                <input
+                    disabled={disabled}
+                    ref={this._inputRef}
+                    autoComplete='off'
+                    formNoValidate
+                    value={value}
+                    className={className}
+                    onInput={this.onInput}
+                />
                 {this.renderStatus()}
             </div>
         </React.Fragment>;

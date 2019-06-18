@@ -6,8 +6,8 @@ import { PHONE_NUMBER } from '../../constants';
 import { CheckoutPageContainer } from '../checkout/CheckoutPageContainer';
 
 export class App extends React.PureComponent<{}, {}> {
-    constructor() {
-        super({});
+    constructor(props: {}) {
+        super(props);
 
         this.state = {};
     }

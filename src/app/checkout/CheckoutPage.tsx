@@ -8,7 +8,7 @@ import './CheckoutPage.scss';
 import { createCreditCartState, CreditCardFormState, extractCardInfo, setDisabledState } from './CreditCardInput';
 import { CreditCardForm } from './CreditCardInput/CreditCardForm';
 import { isCreditCardStateValid } from './CreditCardInput/CreditCardUtils';
-import { MASTERCARD_ICON, VISA_ICON } from './icons';
+import { MASTERCARD_ICON, PLUS_ICON, VISA_ICON } from './icons';
 import { CheckoutModel, OrderSummaryInfoModel, PaymentMethod } from './models';
 import { OrderSummary } from './OrderSummary/OrderSummary';
 
@@ -79,7 +79,7 @@ export class CheckoutPage extends React.PureComponent<CheckoutPageProps, Checkou
         return <Fragment>
             <h1>{LITERALS.CHECKOUT__PAYMENT_SELECTION}</h1>
             <div>
-                <div className='payment__method-header'>
+                <div className='checkout-page__method-header'>
                     <Radio
                         checked={this.state.paymentMethod === PaymentMethod.Card}
                         onChange={this.togglePaymentMethod}
@@ -102,8 +102,10 @@ export class CheckoutPage extends React.PureComponent<CheckoutPageProps, Checkou
                 </div>
             </div>
             <hr />
-            <Button mode='minimal' size='sm'>{LITERALS.CHECKOUT__APPLY_DISCOUNT_CODE}</Button>
-            <div />
+            <Button mode='minimal' size='sm'>
+                <Icon className='checkout-page__code-btn-icon' inline={PLUS_ICON} />
+                {LITERALS.CHECKOUT__APPLY_DISCOUNT_CODE}
+            </Button>
         </Fragment>;
     }
 
@@ -123,7 +125,7 @@ export class CheckoutPage extends React.PureComponent<CheckoutPageProps, Checkou
 
     public render() {
         return <Page className='checkout-page'>
-            <div className='payment col-md-6 col-xs-12'>
+            <div className='checkout-page__payment-container col-md-6 col-xs-12'>
                 {this.renderPaymentSelection()}
             </div>
             <div className='checkout-page__summary-container col-md-4'>
