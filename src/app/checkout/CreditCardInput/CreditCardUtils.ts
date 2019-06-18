@@ -1,6 +1,5 @@
 const CC_REGEX = /[^0-9-\s]+/;
 
-
 /**
  * Validates credit card number.
  * @param cardNumber CC number
@@ -58,7 +57,6 @@ export const validateLuhn = (cardNumber: string) => {
     return (sum % 10) === 0;
 };
 
-
 export const identifyIssuer = (cardNumber: string, supportedSchemes: CardSchemeKey[]): CardSchemeKey | null => {
     for (const entry of Object.entries(CARD_SCHEMES)) {
         const [key, scheme] = entry;
@@ -71,7 +69,7 @@ export const identifyIssuer = (cardNumber: string, supportedSchemes: CardSchemeK
         }
     }
     return null;
-}
+};
 
 interface CardScheame {
     title: string;
