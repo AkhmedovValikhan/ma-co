@@ -1,5 +1,6 @@
 
 # Checkout Page
+[![Build Status](https://travis-ci.org/AkhmedovValikhan/ma-co.svg?branch=master)](https://travis-ci.org/AkhmedovValikhan/ma-co)
 
 ## Structure
 ```
