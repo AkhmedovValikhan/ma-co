@@ -1,8 +1,9 @@
 import { Theme } from "../..";
+import { FieldState } from "../abstract";
 
 export interface CheckboxProps {
-    checked: boolean;
-    onChange: (checked: boolean) => void;
+    onChange: (state: FieldState<boolean>) => void;
     label: string;
     theme?: Theme;
+    state: FieldState<boolean>;
 };

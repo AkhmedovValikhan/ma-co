@@ -1,3 +1,5 @@
+import { CreditCardFormState } from ".";
+import { changeDisableState } from "../../../common/components/forms/abstract";
 
 const CC_REGEX = /[^0-9-\s]+/;
 const CC_MIN_LEN = 13;
@@ -53,4 +55,13 @@ export const validateExpirationDate = (value: string): boolean => {
     const year = parseInt(yearStr, 10);
     const date = new Date(2000 + year, month - 1);
     return date > new Date();
+};
+
+export const setDisabledState = (state: CreditCardFormState, disabled: boolean) => {
+    const newState = { ...state };
+    newState.cardNumberState = changeDisableState(newState.cardNumberState, disabled);
+    newState.cvnState = changeDisableState(newState.cvnState, disabled);
+    newState.expirationState = changeDisableState(newState.expirationState, disabled);
+    newState.saveDetails = changeDisableState(newState.saveDetails, disabled);
+    return newState;
 };

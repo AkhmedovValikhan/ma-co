@@ -1,16 +1,15 @@
 import React, { Fragment } from 'react';
 import { Button, Icon } from '../../common/components/core';
-import { Checkbox, Radio } from '../../common/components/forms';
+import { Radio } from '../../common/components/forms';
 import { createInitialState, FieldState } from '../../common/components/forms/abstract';
 import { Page } from '../../common/components/layout/Page';
 import { LITERALS } from '../../literals';
 import './CheckoutPage.scss';
-import { createCreditCartState, CreditCardFormState } from './CreditCardInput';
+import { createCreditCartState, CreditCardFormState, setDisabledState } from './CreditCardInput';
 import { CreditCardForm } from './CreditCardInput/CreaditCardForm';
 import { MASTERCARD_ICON, VISA_ICON } from './icons';
 import { CardDetails, PaymentMethod } from './models';
 import { OrderSummary, OrderSummaryProps } from './OrderSummary/OrderSummary';
-import MediaQuery from 'react-responsive';
 
 interface CheckoutState {
     cardDetails: CardDetails;
@@ -38,18 +37,20 @@ export class CheckoutPage extends React.PureComponent<{}, CheckoutState> {
         };
     }
 
-    private onCardStateChange = (s: CreditCardFormState) => this.setState({ creditCardState: s });
-    private onSaveDetailsChange = (saveDetail: boolean) => this.setState({ saveDetail });
+    private onCardStateChange = (creditCardState: CreditCardFormState) => this.setState({ creditCardState });
 
     private renderCardForm() {
         return <div className='checkout-page__cc-container'>
             <CreditCardForm state={this.state.creditCardState} onChange={this.onCardStateChange} />
-            <Checkbox checked={this.state.saveDetail} onChange={this.onSaveDetailsChange} label={LITERALS.CHECKOUT__SAVE_CARD_DETAILS_LABEL} />
         </div>;
     }
 
     private togglePaymentMethod = () => {
-        this.setState({ paymentMethod: this.state.paymentMethod === PaymentMethod.Cash ? PaymentMethod.Card : PaymentMethod.Cash });
+        const paymentMethod = this.state.paymentMethod === PaymentMethod.Cash ? PaymentMethod.Card : PaymentMethod.Cash;
+        this.setState({
+            paymentMethod,
+            creditCardState: setDisabledState(this.state.creditCardState, paymentMethod === PaymentMethod.Cash), // this is a bit ugly
+        });
     }
 
     private renderPaymentSelection() {
@@ -85,11 +86,9 @@ export class CheckoutPage extends React.PureComponent<{}, CheckoutState> {
     }
 
     private renderSummaryMobile() {
-        return <MediaQuery maxWidth={1}>
-            <div className='checkout-page__summary-container'>
-                <OrderSummary info={MOCK_SUMMARY} />
-            </div>
-        </MediaQuery>;
+        <div className='checkout-page__summary-container'>
+            <OrderSummary info={MOCK_SUMMARY} />
+        </div>
     }
 
     public render() {

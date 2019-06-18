@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import React from "react";
 import { CheckboxProps } from ".";
 import './Checkbox.scss';
+import { setFieldValue } from '../abstract';
 
 export class Checkbox extends React.PureComponent<CheckboxProps, {}> {
     public static defaultProps: Partial<CheckboxProps> = {
@@ -9,15 +10,17 @@ export class Checkbox extends React.PureComponent<CheckboxProps, {}> {
     };
 
     private onClick = () => {
-        if (this.props.onChange) {
-            this.props.onChange(!this.props.checked);
-        }
+        const { disabled, value } = this.props.state;
+        if (!this.props.onChange || disabled) { return; }
+        this.props.onChange(setFieldValue(this.props.state, !value));
     }
 
     public render() {
+        const { disabled, value } = this.props.state;
         const classes: Record<string, boolean> = {
             'checkbox': true,
-            'checkbox--checked': this.props.checked,
+            'checkbox--checked': value,
+            'checkbox--disabled': disabled,
             ['checkbox--' + this.props.theme]: true,
         };
         const className = classNames(classes);

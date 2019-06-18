@@ -21,6 +21,22 @@ export const createInitialState = <TValue>(value: TValue): FieldState<TValue> =>
     };
 };
 
+export const changeDisableState = <TValue>(state: FieldState<TValue>, disabled: boolean): FieldState<TValue> => {
+    return {
+        ...state,
+        disabled,
+    };
+}
+export const disableField = <TValue>(state: FieldState<TValue>): FieldState<TValue> => changeDisableState(state, true);
+export const enableField = <TValue>(state: FieldState<TValue>): FieldState<TValue> => changeDisableState(state, false);
+
+export const setFieldValue = <TValue>(state: FieldState<TValue>, value: TValue): FieldState<TValue> => {
+    return {
+        ...state,
+        value,
+    };
+};
+
 export interface ValidationResult {
     message: string;
     type: string;

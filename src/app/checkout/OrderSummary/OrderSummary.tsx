@@ -5,9 +5,10 @@ import { Checkbox } from "../../../common/components/forms";
 import { formatPrice } from "../utils/CheckoutUtils";
 import './OrderSummary.scss';
 import { DescriptionListItem, DescriptionList } from "./DescriptionList";
+import { FieldState, createInitialState } from "../../../common/components/forms/abstract";
 
 interface OrderSummaryState {
-    confirmed: boolean;
+    confirmed: FieldState<boolean>;
 }
 
 export interface OrderSummaryProps {
@@ -27,12 +28,12 @@ export class OrderSummary extends React.PureComponent<OrderSummaryProps, OrderSu
         super(props);
 
         this.state = {
-            confirmed: false,
+            confirmed: createInitialState(false),
         };
     }
 
 
-    private onConfirmedChange = (confirmed: boolean) => this.setState({ confirmed });
+    private onConfirmedChange = (confirmed: FieldState<boolean>) => this.setState({ confirmed });
     private renderDescription() {
         const { currency, deliveryFee, discount, shopping, shoppingItems } = this.props.info;
         const items: DescriptionListItem[] = [
@@ -64,7 +65,7 @@ export class OrderSummary extends React.PureComponent<OrderSummaryProps, OrderSu
     private renderActions() {
         return <Fragment>
             <Button className='summary__complete-btn' fluid>{LITERALS.CHECKOUT__COMPLETE_PAYMENT}</Button>
-            <Checkbox checked={this.state.confirmed} onChange={this.onConfirmedChange} label={LITERALS.CHECKOUT__TERMS_TEXT} />
+            <Checkbox state={this.state.confirmed} onChange={this.onConfirmedChange} label={LITERALS.CHECKOUT__TERMS_TEXT} />
         </Fragment>;
     }
 

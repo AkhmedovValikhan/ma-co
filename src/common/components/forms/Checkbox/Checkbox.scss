@@ -6,10 +6,10 @@ $checkbox-inner-diameter: 9px;
 $checkbox-class: '.checkbox';
 
 @mixin checkbox-theme($theme-name, $col) {
-    #{$checkbox-class}#{&}--#{$theme-name} {
+    #{$checkbox-class}:not(#{$checkbox-class}--disabled)#{$checkbox-class}--#{$theme-name} {
 
         #{$checkbox-class}__box {
-            border: 2px solid $col;
+            border-color: $col;
         }
 
         #{$checkbox-class}__circle-inner {
@@ -31,6 +31,11 @@ $checkbox-class: '.checkbox';
         justify-content: center;
         flex-shrink: 0;
         position: relative;
+        border: 2px solid;
+
+        #{$checkbox-class}--disabled & {
+            border-color: $color-disabled;
+        }
     }
 
     &__tick {
@@ -46,6 +51,10 @@ $checkbox-class: '.checkbox';
 
         #{$checkbox-class}--checked & {
             opacity: 1;
+        }
+
+        #{$checkbox-class}--disabled & {
+            background: $color-disabled;
         }
     }
 
