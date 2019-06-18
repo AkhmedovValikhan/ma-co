@@ -1,3 +1,5 @@
+import { CreditCardInfo } from "../CreditCardInput";
+
 export interface CardDetails {
     cardNumber: string;
     expirationMonth: number;
@@ -8,4 +10,19 @@ export interface CardDetails {
 export enum PaymentMethod {
     Card,
     Cash,
+}
+
+export interface CheckoutModel {
+    cardInfo: CreditCardInfo;
+    paymentMethod: PaymentMethod;
+    termsAgreed: boolean;
+    discountCode?: string;
+}
+
+export interface OrderSummaryInfoModel {
+    shopping: number;
+    shoppingItems: number;
+    discount: number;
+    deliveryFee?: number;
+    currency: string;
 }

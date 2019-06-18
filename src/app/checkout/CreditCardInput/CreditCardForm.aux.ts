@@ -23,7 +23,7 @@ export const EXPIRY_DATE_VALIDATE = composeValidators(
 
 export const CREDIT_CARD_VALIDATOR: Validator<string> = composeValidators(
     Validators.required,
-    Validators.required,
+    Validators.numeric,
     (card) => {
         const isValid = validateCreditCard(card);
         if (isValid) {

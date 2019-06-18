@@ -37,6 +37,8 @@ export const setFieldValue = <TValue>(state: FieldState<TValue>, value: TValue):
     };
 };
 
+export const stateIsValid = (...fields: FieldState<any>[]) => fields.every(f => f.valid);
+
 export interface ValidationResult {
     message: string;
     type: string;

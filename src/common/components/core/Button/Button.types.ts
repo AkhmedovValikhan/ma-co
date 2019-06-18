@@ -7,6 +7,7 @@ export interface ButtonProps {
     fluid: boolean;
     mode?: ButtonMode;
     size?: ButtonSize;
+    disabled?: boolean;
 }
 
 export type ButtonMode = 'minimal' | 'normal';

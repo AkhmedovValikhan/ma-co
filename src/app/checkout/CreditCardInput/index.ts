@@ -1,4 +1,5 @@
-import { createInitialState, FieldState } from '../../../common/components/forms/abstract';
+import { FieldState } from '../../../common/components/forms/abstract';
+export { extractCardInfo, createCreditCartState } from './CreaditCardUtils';
 export { setDisabledState } from './CreaditCardUtils';
 export interface CreditCardFormState {
     cardNumberState: FieldState<string>;
@@ -7,11 +8,11 @@ export interface CreditCardFormState {
     saveDetails: FieldState<boolean>;
 }
 
-export const createCreditCartState = (): CreditCardFormState => {
-    return {
-        cardNumberState: createInitialState(''),
-        cvnState: createInitialState(''),
-        expirationState: createInitialState(''),
-        saveDetails: createInitialState(false),
-    };
-};
+export interface CreditCardInfo {
+    cardNumber: string;
+    cvn: string;
+    expirationMonth: number;
+    expirationYear: number;
+    saveDetails: boolean;
+}
+

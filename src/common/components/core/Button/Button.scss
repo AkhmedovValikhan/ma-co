@@ -5,61 +5,68 @@ $btn-class: '.button';
 $btn-height: 60px;
 
 @mixin button-theme($theme-name, $bg-col, $bg-col-hover, $ftn-col) {
-  #{$btn-class}--normal#{$btn-class}--#{$theme-name} {
-    background: $bg-col;
-    color: $ftn-col;
+    #{$btn-class}:not(#{$btn-class}--disabled)#{$btn-class}--normal#{$btn-class}--#{$theme-name} {
+        background: $bg-col;
+        color: $ftn-col;
 
-    &:hover {
-      background: $bg-col-hover;
+        &:hover {
+            background: $bg-col-hover;
+        }
     }
-  }
 }
 
 @mixin button-minimal-theme($theme-name, $col) {
-  #{$btn-class}--minimal#{$btn-class}--#{$theme-name} {
-    color: $col;
+    #{$btn-class}--minimal#{$btn-class}--#{$theme-name} {
+        color: $col;
 
-    &:hover {
-      background: darken(white, 10%);
+        &:hover {
+            background: darken(white, 10%);
+        }
     }
-  }
 }
 
 @mixin button-size($size-name, $font-size, $font-weight, $uppercase) {
-  #{$btn-class}#{&}--#{$size-name} {
-    font-size: $font-size;
-    font-weight: $font-weight;
+    #{$btn-class}#{&}--#{$size-name} {
+        font-size: $font-size;
+        font-weight: $font-weight;
 
-    @if ($uppercase) {
-      text-transform: uppercase;
+        @if ($uppercase) {
+            text-transform: uppercase;
+        }
     }
-  }
 }
 
 #{$btn-class} {
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  border-radius: 5px;
-  text-align: center;
-  padding: 0 15px;
-  color: white;
-  transition: all .15s linear;
-  min-width: 100px;
-  justify-content: center;
-  align-items: center;
-  height: $btn-height;
-  font-size: 1.125rem;
-  font-weight: 600;
-  overflow: hidden;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 5px;
+    text-align: center;
+    padding: 0 15px;
+    color: white;
+    transition: all .15s linear;
+    min-width: 100px;
+    justify-content: center;
+    align-items: center;
+    height: $btn-height;
+    font-size: 1.125rem;
+    font-weight: 600;
+    overflow: hidden;
+    user-select: none;
 
-  &--fluid {
-    display: flex;
-  }
+    &--fluid {
+        display: flex;
+    }
 
-  &--minimal {}
+    &--minimal {}
 
-  &--normal {}
+    &--normal {}
+
+
+    &#{$btn-class}--disabled {
+        background: $color-disabled;
+        cursor: not-allowed;
+    }
 }
 
 @include button-size('md', 1.125rem, 600, true);

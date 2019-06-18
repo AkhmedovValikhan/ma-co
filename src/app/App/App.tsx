@@ -3,7 +3,7 @@ import './App.scss';
 
 import { Footer, Header } from '../../common/components/layout';
 import { PHONE_NUMBER } from '../../constants';
-import { CheckoutPage } from '../checkout';
+import { CheckoutPageContainer } from '../checkout/CheckoutPageContainer';
 
 export class App extends React.PureComponent<{}, {}> {
     constructor() {
@@ -13,7 +13,7 @@ export class App extends React.PureComponent<{}, {}> {
     }
 
     private renderBody() {
-        return <CheckoutPage />;
+        return <CheckoutPageContainer />;
     }
 
     public render() {
