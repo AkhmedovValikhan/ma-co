@@ -1,6 +1,7 @@
 
 # Checkout Page
 [![Build Status](https://travis-ci.org/AkhmedovValikhan/ma-co.svg?branch=master)](https://travis-ci.org/AkhmedovValikhan/ma-co)
+[![codecov](https://codecov.io/gh/AkhmedovValikhan/ma-co/branch/master/graph/badge.svg)](https://codecov.io/gh/AkhmedovValikhan/ma-co)
 
 ## Structure
 ```

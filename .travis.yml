@@ -10,5 +10,8 @@ install:
   - npm install
 script:
   - npm run ci
+  - codecov
 notifications:
   email: false
+env:
+  - CODECOV_TOKEN=e24b5d10-18e5-42a1-baec-73060abad273
