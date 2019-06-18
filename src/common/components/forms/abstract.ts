@@ -6,6 +6,7 @@ export interface FieldState<TValue> {
     valid: boolean;
     dirty: boolean;
     changed: boolean;
+    disabled: boolean;
     [INITIAL_VALUE]: TValue;
 }
 
@@ -15,6 +16,7 @@ export const createInitialState = <TValue>(value: TValue): FieldState<TValue> =>
         changed: false,
         dirty: false,
         valid: true,
+        disabled: false,
         [INITIAL_VALUE]: value,
     };
 };

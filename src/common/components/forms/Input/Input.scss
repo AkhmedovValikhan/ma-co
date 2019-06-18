@@ -42,4 +42,9 @@ $input-height: 48px;
     &--fluid {
         width: 100%;
     }
+
+    &#{&}--disabled {
+        background-color: $color-disabled;
+        cursor: not-allowed;
+    }
 }

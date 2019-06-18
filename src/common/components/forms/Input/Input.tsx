@@ -53,8 +53,8 @@ export class Input extends React.PureComponent<InputProps, State> {
     }
 
     private renderStatus(): React.ReactNode {
-        if (!this.props.state.dirty) { return null; }
-        const { valid } = this.props.state;
+        const { dirty, disabled, valid } = this.props.state;
+        if (!dirty || disabled) { return null; }
         return <Tooltip visible={!valid} placement={'top'} overlay={this.state.errorMessages[0]}>
             <Icon className='input__status-icon' inline={valid ? CHECK_ICON : ERROR_ICON} />
         </Tooltip>;
@@ -65,15 +65,17 @@ export class Input extends React.PureComponent<InputProps, State> {
         if (this.props.formatter) {
             value = this.props.formatter(value);
         }
+        const { disabled, valid } = this.props.state;
         const classes = classNames({
             'input': true,
             'input--fluid': this.props.fluid,
-            'input--invalid': !this.props.state.valid,
+            'input--disabled': disabled,
+            'input--invalid': !valid && !disabled,
         });
         const className = `${classes} ${this.props.className ? this.props.className : ''}`;
         return <React.Fragment>
             <div className='input__container'>
-                <input ref={this._inputRef} autoComplete='off' formNoValidate value={value} className={className} onInput={this.onInput} />
+                <input disabled={disabled} ref={this._inputRef} autoComplete='off' formNoValidate value={value} className={className} onInput={this.onInput} />
                 {this.renderStatus()}
             </div>
         </React.Fragment>;
