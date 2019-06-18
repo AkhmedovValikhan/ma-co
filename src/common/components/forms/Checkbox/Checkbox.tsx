@@ -1,8 +1,8 @@
 import classNames from 'classnames';
-import React from "react";
-import { CheckboxProps } from ".";
-import './Checkbox.scss';
+import React from 'react';
+import { CheckboxProps } from '.';
 import { setFieldValue } from '../abstract';
+import './Checkbox.scss';
 
 export class Checkbox extends React.PureComponent<CheckboxProps, {}> {
     public static defaultProps: Partial<CheckboxProps> = {

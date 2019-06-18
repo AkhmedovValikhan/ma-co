@@ -2,13 +2,10 @@ import * as React from 'react';
 import './App.scss';
 
 import { Footer, Header } from '../../common/components/layout';
-import { CheckoutPage } from '../checkout';
 import { PHONE_NUMBER } from '../../constants';
+import { CheckoutPage } from '../checkout';
 
-interface State {
-}
-
-export class App extends React.PureComponent<{}, State> {
+export class App extends React.PureComponent<{}, {}> {
     constructor() {
         super({});
 

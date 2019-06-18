@@ -1,4 +1,4 @@
-import { createInitialState, FieldState } from "../../../common/components/forms/abstract";
+import { createInitialState, FieldState } from '../../../common/components/forms/abstract';
 export { setDisabledState } from './CreaditCardUtils';
 export interface CreditCardFormState {
     cardNumberState: FieldState<string>;

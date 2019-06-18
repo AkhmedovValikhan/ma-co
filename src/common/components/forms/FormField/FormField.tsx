@@ -1,6 +1,6 @@
-import React from "react";
-import { FormFieldProps } from "./FormField.types";
+import React from 'react';
 import './FormField.scss';
+import { FormFieldProps } from './FormField.types';
 
 export class FormField extends React.PureComponent<FormFieldProps, {}> {
     public render() {

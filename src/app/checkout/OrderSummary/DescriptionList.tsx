@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { Theme } from "../../../common/components";
 import classNames from 'classnames';
+import * as React from 'react';
+import { Theme } from '../../../common/components';
 import './DescriptionList.scss';
 
 export interface DescriptionListItem {
@@ -53,4 +53,4 @@ const renderItem = (item: DescriptionListItem, total: boolean) => {
         </p>
         <div className='description-list__item-value'>{item.value}</div>
     </div>;
-}
+};

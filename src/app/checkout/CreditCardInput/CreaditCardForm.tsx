@@ -1,9 +1,9 @@
 import React from 'react';
 import { CreditCardFormState } from '.';
-import { FormField, Input, Checkbox } from '../../../common/components/forms';
+import { Checkbox, FormField, Input } from '../../../common/components/forms';
 import { FieldState } from '../../../common/components/forms/abstract';
 import { LITERALS } from '../../../literals';
-import { EXPIRY_DATE_CLEAVE, CC_CLEAVE, CVN_VALIDATOR, EXPIRY_DATE_VALIDATE, CREDIT_CARD_VALIDATOR } from './CreditCardForm.aux';
+import { CC_CLEAVE, CREDIT_CARD_VALIDATOR, CVN_VALIDATOR, EXPIRY_DATE_CLEAVE, EXPIRY_DATE_VALIDATE } from './CreditCardForm.aux';
 
 export interface CreditCardFormProps {
     state: CreditCardFormState;
@@ -74,4 +74,3 @@ export class CreditCardForm extends React.PureComponent<CreditCardFormProps, Sta
         </div>;
     }
 }
-

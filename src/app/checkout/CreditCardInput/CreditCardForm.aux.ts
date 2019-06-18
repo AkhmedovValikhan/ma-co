@@ -1,6 +1,6 @@
-import { InputProps } from "../../../common/components/forms";
-import { composeValidators, Validators, Validator } from "../../../common/components/forms/abstract";
-import { validateExpirationDate, validateCreditCard } from "./CreaditCardUtils";
+import { InputProps } from '../../../common/components/forms';
+import { composeValidators, Validator, Validators } from '../../../common/components/forms/abstract';
+import { validateCreditCard, validateExpirationDate } from './CreaditCardUtils';
 
 export const EXPIRY_DATE_CLEAVE: InputProps['cleaveOptions'] = {
     date: true,

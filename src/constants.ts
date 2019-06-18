@@ -5,4 +5,4 @@ export const BREAKPOINTS = {
     SM: 768,
     LG: 992,
     XL: 1200,
-}
+};

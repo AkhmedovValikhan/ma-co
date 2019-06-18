@@ -26,7 +26,7 @@ export const changeDisableState = <TValue>(state: FieldState<TValue>, disabled: 
         ...state,
         disabled,
     };
-}
+};
 export const disableField = <TValue>(state: FieldState<TValue>): FieldState<TValue> => changeDisableState(state, true);
 export const enableField = <TValue>(state: FieldState<TValue>): FieldState<TValue> => changeDisableState(state, false);
 

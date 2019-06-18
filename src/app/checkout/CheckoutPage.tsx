@@ -85,12 +85,6 @@ export class CheckoutPage extends React.PureComponent<{}, CheckoutState> {
         </Fragment>;
     }
 
-    private renderSummaryMobile() {
-        <div className='checkout-page__summary-container'>
-            <OrderSummary info={MOCK_SUMMARY} />
-        </div>
-    }
-
     public render() {
         return <Page className='checkout-page'>
             <div className='payment col-md-6 col-xs-12'>
@@ -99,7 +93,6 @@ export class CheckoutPage extends React.PureComponent<{}, CheckoutState> {
             <div className='checkout-page__summary-container col-md-4'>
                 <OrderSummary info={MOCK_SUMMARY} />
             </div>
-            {this.renderSummaryMobile()}
         </Page>;
     }
 }

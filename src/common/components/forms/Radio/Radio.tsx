@@ -1,7 +1,7 @@
-import React from "react";
-import { RadioProps } from "./Radio.types";
-import classNames from "classnames";
+import classNames from 'classnames';
+import React from 'react';
 import './Radio.scss';
+import { RadioProps } from './Radio.types';
 
 export class Radio extends React.PureComponent<RadioProps, {}> {
     public static defaultProps: Partial<RadioProps> = {

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import './Icon.scss';
 
 export interface IconProps {
@@ -11,4 +11,4 @@ export class Icon extends React.PureComponent<IconProps> {
         const { className } = this.props;
         return <div className={'icon ' + (className ? className : '')} dangerouslySetInnerHTML={{ __html: this.props.inline }} />;
     }
-};
+}

@@ -1,11 +1,11 @@
-import React, { Fragment } from "react";
-import { Button } from "../../../common/components/core";
-import { LITERALS } from "../../../literals";
-import { Checkbox } from "../../../common/components/forms";
-import { formatPrice } from "../utils/CheckoutUtils";
+import React, { Fragment } from 'react';
+import { Button } from '../../../common/components/core';
+import { Checkbox } from '../../../common/components/forms';
+import { createInitialState, FieldState } from '../../../common/components/forms/abstract';
+import { LITERALS } from '../../../literals';
+import { formatPrice } from '../utils/CheckoutUtils';
+import { DescriptionList, DescriptionListItem } from './DescriptionList';
 import './OrderSummary.scss';
-import { DescriptionListItem, DescriptionList } from "./DescriptionList";
-import { FieldState, createInitialState } from "../../../common/components/forms/abstract";
 
 interface OrderSummaryState {
     confirmed: FieldState<boolean>;
@@ -31,7 +31,6 @@ export class OrderSummary extends React.PureComponent<OrderSummaryProps, OrderSu
             confirmed: createInitialState(false),
         };
     }
-
 
     private onConfirmedChange = (confirmed: FieldState<boolean>) => this.setState({ confirmed });
     private renderDescription() {

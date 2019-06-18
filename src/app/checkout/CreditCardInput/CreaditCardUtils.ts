@@ -1,5 +1,5 @@
-import { CreditCardFormState } from ".";
-import { changeDisableState } from "../../../common/components/forms/abstract";
+import { CreditCardFormState } from '.';
+import { changeDisableState } from '../../../common/components/forms/abstract';
 
 const CC_REGEX = /[^0-9-\s]+/;
 const CC_MIN_LEN = 13;
@@ -40,7 +40,6 @@ export const validateCreditCard = (cardNumber: string) => {
 
     return (sum % 10) === 0;
 };
-
 
 // export const validateExo
 

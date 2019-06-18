@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
+import { LITERALS } from '../../../../literals';
+import { Icon } from '../../core';
 import './Header.scss';
-import { LITERALS } from "../../../../literals";
-import { Icon } from "../../core";
-import { HEADER_ICON, PHONE_ICON } from "./icons";
-import { HeaderProps } from "./Header.types";
+import { HeaderProps } from './Header.types';
+import { HEADER_ICON, PHONE_ICON } from './icons';
 
 export class Header extends React.PureComponent<HeaderProps, {}> {
     private renderHelp() {

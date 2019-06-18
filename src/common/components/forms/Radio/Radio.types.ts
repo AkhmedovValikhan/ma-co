@@ -1,4 +1,4 @@
-import { Theme } from "../..";
+import { Theme } from '../..';
 
 export interface RadioProps {
     checked: boolean;
