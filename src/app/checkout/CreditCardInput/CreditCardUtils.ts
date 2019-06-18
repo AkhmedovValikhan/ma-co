@@ -1,17 +1,23 @@
-import { CreditCardFormState, CreditCardInfo } from '.';
-import { allValid, anyDirty } from '../../../common/components/forms';
-import { changeDisableState, createInitialState } from '../../../common/components/forms/abstract';
-
 const CC_REGEX = /[^0-9-\s]+/;
-const CC_MIN_LEN = 13;
-const CC_MAX_LEN = 20;
+
 
 /**
- * Validates credit card number using Luhn algorith (Taken from https://www.geeksforgeeks.org/luhn-algorithm/), also checks length.
+ * Validates credit card number.
  * @param cardNumber CC number
+ * @param supportedSchemes Supported Schemes
  */
-export const validateCreditCard = (cardNumber: string) => {
-    if (cardNumber.length < CC_MIN_LEN || cardNumber.length > CC_MAX_LEN) {
+export const validateCreditCard = (cardNumber: string, supportedSchemes: CardSchemeKey[]) => {
+    if (!cardNumber || !cardNumber.length) {
+        return false;
+    }
+
+    const issuer = identifyIssuer(cardNumber, supportedSchemes);
+    if (!issuer) {
+        return false;
+    }
+    const scheme = CARD_SCHEMES[issuer];
+
+    if (cardNumber.length < scheme.minLength || cardNumber.length > scheme.maxLength) {
         return false;
     }
 
@@ -19,6 +25,16 @@ export const validateCreditCard = (cardNumber: string) => {
         return false;
     }
 
+    const luhnValid = validateLuhn(cardNumber);
+
+    return luhnValid;
+};
+
+/**
+ * Validates credit card number using Luhn algorith (Taken from https://www.geeksforgeeks.org/luhn-algorithm/)
+ * @param cardNumber CC number
+ */
+export const validateLuhn = (cardNumber: string) => {
     const number = cardNumber.replace(/\D/g, '');
 
     let sum = 0;
@@ -42,68 +58,41 @@ export const validateCreditCard = (cardNumber: string) => {
     return (sum % 10) === 0;
 };
 
-// export const validateExo
 
-export const parseExpirationDate = (value: string): [number, number] | null => {
-    if (value.length !== 4) { return null; }
-    let month = 0;
-    let year = 0;
-
-    const monthStr = value.slice(0, 2);
-    month = parseInt(monthStr, 10);
-    if (month > 12 || month < 2) {
-        return null;
+export const identifyIssuer = (cardNumber: string, supportedSchemes: CardSchemeKey[]): CardSchemeKey | null => {
+    for (const entry of Object.entries(CARD_SCHEMES)) {
+        const [key, scheme] = entry;
+        if (!supportedSchemes.some(s => s === key)) {
+            return null;
+        }
+        const isScheme = scheme.begining.some(beg => cardNumber.startsWith(beg));
+        if (isScheme) {
+            return key as CardSchemeKey;
+        }
     }
-    const yearStr = value.slice(2, 4);
-    year = parseInt(yearStr, 10);
-    return [month, 2000 + year];
+    return null;
+}
+
+interface CardScheame {
+    title: string;
+    minLength: number;
+    maxLength: number;
+    begining: string[];
+}
+
+export const CARD_SCHEMES = {
+    ['visa']: {
+        begining: ['4'],
+        maxLength: 16,
+        minLength: 13,
+        title: 'Visa',
+    } as CardScheame,
+    ['mc']: {
+        title: 'Master Card',
+        begining: ['51', '52', '53', '54', '55'],
+        maxLength: 16,
+        minLength: 16,
+    } as CardScheame,
 };
 
-export const validateExpirationDate = (value: string): boolean => {
-    const parsed = parseExpirationDate(value);
-    if (!parsed) { return false; }
-
-    const [month, year] = parsed;
-    const date = new Date(year, month - 1);
-    return date > new Date();
-};
-
-export const setDisabledState = (state: CreditCardFormState, disabled: boolean) => {
-    const newState = { ...state };
-    newState.cardNumberState = changeDisableState(newState.cardNumberState, disabled);
-    newState.cvnState = changeDisableState(newState.cvnState, disabled);
-    newState.expirationState = changeDisableState(newState.expirationState, disabled);
-    newState.saveDetails = changeDisableState(newState.saveDetails, disabled);
-    return newState;
-};
-
-export const createCreditCartState = (): CreditCardFormState => {
-    return {
-        cardNumberState: createInitialState(''),
-        cvnState: createInitialState(''),
-        expirationState: createInitialState(''),
-        saveDetails: createInitialState(false),
-    };
-};
-
-export const extractCardInfo = (cardState: CreditCardFormState): CreditCardInfo | null => {
-    const isValid = isCreditCardStateValid(cardState);
-    if (!isValid) { return null; }
-    const [month, year] = parseExpirationDate(cardState.expirationState.value)!;
-    return {
-        cardNumber: cardState.cardNumberState.value,
-        cvn: cardState.cvnState.value,
-        expirationMonth: month,
-        expirationYear: year,
-        saveDetails: cardState.saveDetails.value,
-    };
-};
-
-const getAllFields = (cardState: CreditCardFormState) => [cardState.saveDetails, cardState.expirationState, cardState.cvnState, cardState.cardNumberState];
-
-export const isCreditCardStateValid = (cardState: CreditCardFormState): boolean => {
-    const fields = getAllFields(cardState);
-    const isValid = allValid(...fields);
-    const isDirty = anyDirty(...fields);
-    return isValid && isDirty;
-};
+export type CardSchemeKey = keyof typeof CARD_SCHEMES;

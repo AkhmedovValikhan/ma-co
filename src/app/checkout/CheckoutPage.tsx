@@ -5,9 +5,8 @@ import { createInitialState, FieldState } from '../../common/components/forms/ab
 import { Page } from '../../common/components/layout/Page';
 import { LITERALS } from '../../literals';
 import './CheckoutPage.scss';
-import { createCreditCartState, CreditCardFormState, extractCardInfo, setDisabledState } from './CreditCardInput';
+import { createCreditCartState, CreditCardFormState, extractCardInfo, isCreditCardStateValid, setDisabledState } from './CreditCardInput';
 import { CreditCardForm } from './CreditCardInput/CreditCardForm';
-import { isCreditCardStateValid } from './CreditCardInput/CreditCardUtils';
 import { MASTERCARD_ICON, PLUS_ICON, VISA_ICON } from './icons';
 import { CheckoutModel, OrderSummaryInfoModel, PaymentMethod } from './models';
 import { OrderSummary } from './OrderSummary/OrderSummary';

@@ -1,5 +1,6 @@
 import { composeValidators, InputProps, Validator, Validators } from '../../../common/components/forms';
-import { validateCreditCard, validateExpirationDate } from './CreditCardUtils';
+import { validateExpirationDate } from './CreditCardFormUtils';
+import { validateCreditCard } from './CreditCardUtils';
 
 export const EXPIRY_DATE_CLEAVE: InputProps['cleaveOptions'] = {
     date: true,
@@ -24,7 +25,7 @@ export const CREDIT_CARD_VALIDATOR: Validator<string> = composeValidators(
     Validators.required,
     Validators.numeric,
     (card) => {
-        const isValid = validateCreditCard(card);
+        const isValid = validateCreditCard(card, ['mc', 'visa']);
         if (isValid) {
             return null;
         }
