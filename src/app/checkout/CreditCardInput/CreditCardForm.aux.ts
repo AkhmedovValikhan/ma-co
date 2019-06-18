@@ -1,5 +1,5 @@
-import { InputProps, composeValidators, Validators, Validator } from '../../../common/components/forms';
-import { validateCreditCard, validateExpirationDate } from './CreaditCardUtils';
+import { composeValidators, InputProps, Validator, Validators } from '../../../common/components/forms';
+import { validateCreditCard, validateExpirationDate } from './CreditCardUtils';
 
 export const EXPIRY_DATE_CLEAVE: InputProps['cleaveOptions'] = {
     date: true,

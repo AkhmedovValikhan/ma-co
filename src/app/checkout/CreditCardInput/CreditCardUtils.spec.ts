@@ -1,4 +1,4 @@
-import { validateCreditCard } from './CreaditCardUtils';
+import { validateCreditCard } from './CreditCardUtils';
 
 describe('CreditCardUtils', () => {
     describe('validateCreditCard', () => {

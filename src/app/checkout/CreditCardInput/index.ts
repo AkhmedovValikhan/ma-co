@@ -1,6 +1,6 @@
 import { FieldState } from '../../../common/components/forms/abstract';
-export { extractCardInfo, createCreditCartState } from './CreaditCardUtils';
-export { setDisabledState } from './CreaditCardUtils';
+export { extractCardInfo, createCreditCartState } from './CreditCardUtils';
+export { setDisabledState } from './CreditCardUtils';
 export interface CreditCardFormState {
     cardNumberState: FieldState<string>;
     expirationState: FieldState<string>;
@@ -15,4 +15,3 @@ export interface CreditCardInfo {
     expirationYear: number;
     saveDetails: boolean;
 }
-

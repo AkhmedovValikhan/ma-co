@@ -4,12 +4,10 @@ const path = require("path");
 const TerserJSPlugin = require("terser-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HTMLInlineCSSWebpackPlugin = require("html-inline-css-webpack-plugin").default;
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
-const ServiceWorkerWebpackPlugin = require("serviceworker-webpack-plugin");
 
 const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = relativePath => path.resolve(appDirectory, relativePath);
@@ -56,14 +54,6 @@ module.exports = function (env) {
                         "file-loader",
                     ],
                 },
-                // {
-                //     test: /index\.html$/,
-                //     loader: 'prerender-loader',
-                //     options: {
-                //         string: true,
-                //         disabled: !isEnvProduction
-                //     }
-                // }
             ],
         },
         devServer: {
@@ -84,9 +74,6 @@ module.exports = function (env) {
             }) : undefined,
             ...htmlPlugins(isEnvProduction),
             // new BundleAnalyzerPlugin(),
-            new ServiceWorkerWebpackPlugin({
-                entry: path.join(__dirname, "src/service-worker.js"),
-            }),
             new CopyPlugin([
                 { from: "./public", to: "./", toType: "dir" },
             ]),

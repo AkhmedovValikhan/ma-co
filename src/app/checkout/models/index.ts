@@ -1,4 +1,4 @@
-import { CreditCardInfo } from "../CreditCardInput";
+import { CreditCardInfo } from '../CreditCardInput';
 
 export interface CardDetails {
     cardNumber: string;

@@ -6,11 +6,11 @@ import { Page } from '../../common/components/layout/Page';
 import { LITERALS } from '../../literals';
 import './CheckoutPage.scss';
 import { createCreditCartState, CreditCardFormState, extractCardInfo, setDisabledState } from './CreditCardInput';
-import { CreditCardForm } from './CreditCardInput/CreaditCardForm';
+import { CreditCardForm } from './CreditCardInput/CreditCardForm';
+import { isCreditCardStateValid } from './CreditCardInput/CreditCardUtils';
 import { MASTERCARD_ICON, VISA_ICON } from './icons';
 import { CheckoutModel, OrderSummaryInfoModel, PaymentMethod } from './models';
 import { OrderSummary } from './OrderSummary/OrderSummary';
-import { isCreditCardStateValid } from './CreditCardInput/CreaditCardUtils';
 
 interface CheckoutState {
     paymentMethod: PaymentMethod;

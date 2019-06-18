@@ -44,7 +44,6 @@ export const validateCreditCard = (cardNumber: string) => {
 
 // export const validateExo
 
-
 export const parseExpirationDate = (value: string): [number, number] | null => {
     if (value.length !== 4) { return null; }
     let month = 0;
