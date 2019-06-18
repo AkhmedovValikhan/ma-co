@@ -46,5 +46,6 @@ $input-height: 48px;
     &#{&}--disabled {
         background-color: $color-disabled;
         cursor: not-allowed;
+        color: $color-disabled-font;
     }
 }

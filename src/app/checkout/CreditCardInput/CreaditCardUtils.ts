@@ -1,5 +1,6 @@
 import { CreditCardFormState, CreditCardInfo } from '.';
-import { changeDisableState, createInitialState, FieldState } from '../../../common/components/forms/abstract';
+import { allValid, anyDirty } from '../../../common/components/forms';
+import { changeDisableState, createInitialState } from '../../../common/components/forms/abstract';
 
 const CC_REGEX = /[^0-9-\s]+/;
 const CC_MIN_LEN = 13;
@@ -99,7 +100,11 @@ export const extractCardInfo = (cardState: CreditCardFormState): CreditCardInfo 
     };
 };
 
+const getAllFields = (cardState: CreditCardFormState) => [cardState.saveDetails, cardState.expirationState, cardState.cvnState, cardState.cardNumberState];
+
 export const isCreditCardStateValid = (cardState: CreditCardFormState): boolean => {
-    const isValid = Object.values(cardState).every((state: FieldState<any>) => state.valid);
-    return isValid;
+    const fields = getAllFields(cardState);
+    const isValid = allValid(...fields);
+    const isDirty = anyDirty(...fields);
+    return isValid && isDirty;
 };

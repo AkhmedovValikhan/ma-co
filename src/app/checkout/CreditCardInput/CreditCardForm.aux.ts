@@ -1,5 +1,4 @@
-import { InputProps } from '../../../common/components/forms';
-import { composeValidators, Validator, Validators } from '../../../common/components/forms/abstract';
+import { InputProps, composeValidators, Validators, Validator } from '../../../common/components/forms';
 import { validateCreditCard, validateExpirationDate } from './CreaditCardUtils';
 
 export const EXPIRY_DATE_CLEAVE: InputProps['cleaveOptions'] = {
@@ -30,7 +29,7 @@ export const CREDIT_CARD_VALIDATOR: Validator<string> = composeValidators(
             return null;
         }
         return {
-            message: 'Creadit Card nujmber is not validdfddfd',
+            message: 'Credit Card number is not valid',
             type: 'credit-card',
         };
     });
