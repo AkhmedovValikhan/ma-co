@@ -1,0 +1,72 @@
+@import '../../../../styles/variables.scss';
+
+$btn-class: '.button';
+
+$btn-height: 60px;
+
+@mixin button-theme($theme-name, $bg-col, $bg-col-hover, $ftn-col) {
+  #{$btn-class}--normal#{$btn-class}--#{$theme-name} {
+    background: $bg-col;
+    color: $ftn-col;
+
+    &:hover {
+      background: $bg-col-hover;
+    }
+  }
+}
+
+@mixin button-minimal-theme($theme-name, $col) {
+  #{$btn-class}--minimal#{$btn-class}--#{$theme-name} {
+    color: $col;
+
+    &:hover {
+      background: darken(white, 10%);
+    }
+  }
+}
+
+@mixin button-size($size-name, $font-size, $font-weight, $uppercase) {
+  #{$btn-class}#{&}--#{$size-name} {
+    font-size: $font-size;
+    font-weight: $font-weight;
+
+    @if ($uppercase) {
+      text-transform: uppercase;
+    }
+  }
+}
+
+#{$btn-class} {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 5px;
+  text-align: center;
+  padding: 0 15px;
+  color: white;
+  transition: all .15s linear;
+  min-width: 100px;
+  justify-content: center;
+  align-items: center;
+  height: $btn-height;
+  font-size: 1.125rem;
+  font-weight: 600;
+  overflow: hidden;
+
+  &--fluid {
+    display: flex;
+  }
+
+  &--minimal {}
+
+  &--normal {}
+}
+
+@include button-size('md', 1.125rem, 600, true);
+@include button-size('sm', 1rem, 500, false);
+
+@include button-theme('primary', $color-primary, $color-primary-hover, white);
+@include button-minimal-theme('primary', $color-primary);
+
+
+// @include button-theme('secondary', $color-secondary-bg, $color-secondary-bg-hover, $color-secondary);

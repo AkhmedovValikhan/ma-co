@@ -1,0 +1,58 @@
+@import '../../../../styles/variables.scss';
+
+$checkbox-size: 16px;
+$checkbox-inner-diameter: 9px;
+
+$checkbox-class: '.checkbox';
+
+@mixin checkbox-theme($theme-name, $col) {
+    #{$checkbox-class}#{&}--#{$theme-name} {
+
+        #{$checkbox-class}__box {
+            border: 2px solid $col;
+        }
+
+        #{$checkbox-class}__circle-inner {
+            background: $col;
+        }
+    }
+}
+
+#{$checkbox-class} {
+    display: inline-flex;
+    align-items: flex-start;
+    cursor: pointer;
+
+    &__box {
+        height: $checkbox-size;
+        width: $checkbox-size;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        position: relative;
+    }
+
+    &__tick {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        display: block;
+        background: $color-primary;
+        opacity: 0;
+        transition: opacity .15s linear;
+
+        #{$checkbox-class}--checked & {
+            opacity: 1;
+        }
+    }
+
+    &__label {
+        cursor: inherit;
+        margin-inline-start: 0.7em;
+    }
+}
+
+@include checkbox-theme('primary', $color-primary);

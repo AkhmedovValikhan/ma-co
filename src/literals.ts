@@ -1,0 +1,21 @@
+export const LITERALS = {
+    CHECKOUT__COMPLETE_PAYMENT: 'Complete Payment',
+    CHECKOUT__PAYMENT_SELECTION: 'Payment Selection',
+    CHECKOUT__CARD_LABEL: 'Card Number',
+    CHECKOUT__EXPIRATION_LABEL: 'Expiration Date',
+    CHECKOUT__CVN_LABEL: 'CVN',
+    CHECKOUT__SAVE_CARD_DETAILS_LABEL: 'Save my credit card details',
+    CHECKOUT__CREDIT_DEBIT_CARD: 'CreditCard/Debit Card',
+    CHECKOUT__CASH_ON_DELIVERY: 'Cash On Delivery',
+    CHECKOUT__APPLY_DISCOUNT_CODE: 'Apply Discount Code',
+    CHECKOUT__ORDER_SUMMARY: 'Order Summary',
+    CHECKOUT__DISCOUNT: 'Discount',
+    CHECKOUT__SHOPPING: 'Shopping',
+    CHECKOUT__DELIVERY_FEE: 'Delivery Fee',
+    CHECKOUT__TOTAL_INC_VAT: 'Total Incl. VAT',
+    CHECKOUT__FREE: 'FREE',
+    CHECKOUT__TERMS_TEXT: `By placing this order, I confirm that I have read and agree with the Terms & Conditions`,
+
+    HEADER__NEED_HELP: 'Need help?',
+    FOOTER__COPYRIGHT: '© 2019 Carrefour. All rights reserved',
+};

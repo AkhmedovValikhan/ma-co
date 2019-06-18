@@ -1,0 +1,45 @@
+@import '../../../../styles/variables.scss';
+
+$class: '.input';
+$input-height: 48px;
+
+#{$class} {
+    display: flex;
+    border: 1px solid $color-border;
+    font-family: inherit;
+    font-size: 1.1rem;
+    position: relative;
+    font-weight: 500;
+    border-radius: 5px;
+    width: 100%;
+    transition: all .3s ease-in-out;
+    color: $color-base;
+    padding: 0 32px 0 16px;
+    height: $input-height;
+
+    &:hover,
+    &:focus {}
+
+    &__container {
+        position: relative;
+    }
+
+    &__status-icon {
+        position: absolute;
+        top: $input-height / 2 - 7px;
+        right: 18px;
+    }
+
+    &:focus {
+        border-color: $color-primary;
+    }
+
+
+    &#{&}--invalid {
+        border-color: $color-danger;
+    }
+
+    &--fluid {
+        width: 100%;
+    }
+}

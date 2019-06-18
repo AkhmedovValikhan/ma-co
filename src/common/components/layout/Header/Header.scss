@@ -1,0 +1,43 @@
+@import '../../../../styles/variables.scss';
+@import '../../../../styles/mixins.scss';
+
+$header-height: 80px;
+
+.header {
+    height: $header-height;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__logo {
+        @include media-breakpoint-down(xs) {
+            height: 28px;
+            width: 106px;
+        }
+
+    }
+
+    &__help {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: $color-base;
+
+        &-icon {
+            margin-right: 0.8rem;
+        }
+
+        &-phone {
+            margin-left: 0.8rem;
+            text-decoration: none;
+            font-weight: 700;
+            color: $color-primary;
+        }
+    }
+}

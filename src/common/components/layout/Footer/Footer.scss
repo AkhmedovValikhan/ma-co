@@ -1,0 +1,18 @@
+$footer-height: 80px;
+$footer-bg-color: #31261D;
+
+.footer {
+    background: $footer-bg-color;
+    height: $footer-height;
+    display: flex;
+    align-items: center;
+    color: white;
+
+    &__icon {
+
+    }
+    &__copy {
+        font-size: 700;
+        text-align: right;
+    }
+}

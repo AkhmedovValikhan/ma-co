@@ -1,0 +1,50 @@
+@import '../../../../styles/variables.scss';
+
+$radio-diameter: 17px;
+$radio-inner-diameter: 9px;
+
+$radio-class: '.radio';
+
+@mixin radio-theme($theme-name, $col) {
+  #{$radio-class}#{&}--#{$theme-name} {
+
+    #{$radio-class}__circle {
+      border: 2px solid $col;
+    }
+
+    #{$radio-class}__circle-inner {
+      background: $col;
+    }
+  }
+}
+
+#{$radio-class} {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+
+  &__circle {
+    height: $radio-diameter;
+    width: $radio-diameter;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__circle-inner {
+    display: block;
+    border-radius: 50%;
+    height: $radio-inner-diameter;
+    width: $radio-inner-diameter;
+  }
+
+  &__label {
+    cursor: inherit;
+    font-size: 1.125rem;
+    margin-inline-start: 0.7em;
+  }
+}
+
+@include radio-theme('primary', $color-primary);

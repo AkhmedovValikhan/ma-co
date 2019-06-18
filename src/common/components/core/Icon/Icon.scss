@@ -1,0 +1,14 @@
+.icon {
+    display: inline-block;
+    font-size: 0;
+
+    &+& {
+        margin-left: 8px;
+    }
+
+    svg {
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+    }
+}

@@ -1,0 +1,19 @@
+@import '../../../styles/variables.scss';
+
+.description-list {
+    &__item {
+        display: flex;
+        justify-content: space-between;
+        margin: 0 0 16px;
+
+        &--danger {
+            color: $color-danger;
+        }
+
+        &--total {
+            font-size: 1.125rem;
+            font-weight: 500;
+            margin: 5px 0 30px;
+        }
+    }
+}
